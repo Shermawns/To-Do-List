@@ -18,9 +18,10 @@ public class UserController {
 
     private final CreateUserCase createUser;
 
-    public UserController(CreateUserImpl createUser) {
+    public UserController(CreateUserCase createUser) {
         this.createUser = createUser;
     }
+
 
     @PostMapping(value = "/create")
     public ResponseEntity<UserDto> create(@RequestBody User user){

@@ -15,6 +15,9 @@ public class User {
     List<Task> task;
     LocalDate creationDate;
 
+    public User() {
+    }
+
     public User(Long id, String name, LocalDate birthDate, Address address, String email, String password, AccountType accountType, List<Task> task, LocalDate creationDate) {
         this.id = id;
         this.name = name;

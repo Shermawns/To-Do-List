@@ -11,6 +11,7 @@ public class CreateUserImpl implements CreateUserCase {
         this.userGateway = userGateway;
     }
 
+
     @Override
     public User execute(User user) {
         return user;

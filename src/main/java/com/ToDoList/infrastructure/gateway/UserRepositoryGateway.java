@@ -5,6 +5,9 @@ import com.ToDoList.core.gateway.UserGateway;
 import com.ToDoList.infrastructure.mapper.UserEntityMapper;
 import com.ToDoList.infrastructure.persistence.UserEntity;
 import com.ToDoList.infrastructure.persistence.repositories.UserRepository;
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserRepositoryGateway implements UserGateway {
 
     private final UserRepository userRepository;
