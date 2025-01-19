@@ -4,6 +4,8 @@ import com.ToDoList.core.entities.User;
 import com.ToDoList.infrastructure.persistence.UserEntity;
 import lombok.experimental.UtilityClass;
 
+import java.util.stream.Collectors;
+
 @UtilityClass
 public class UserEntityMapper {
 
@@ -13,10 +15,13 @@ public class UserEntityMapper {
                 .id(user.getId())
                 .name(user.getName())
                 .birthDate(user.getBirthDate())
-                .address(user.getAddress())
+                .address(AddressEntityMapper.toEntity(user.getAddress()))
                 .email(user.getEmail())
                 .password(user.getPassword())
-                .tasks(user.getTask())
+                .tasks(user.getTask()
+                        .stream()
+                        .map(TaskEntityMapper::toEntity)
+                        .collect(Collectors.toList()))
                 .accountType(user.getAccountType())
                 .creationDate(user.getCreationDate())
                 .build();
@@ -27,11 +32,14 @@ public class UserEntityMapper {
                 user.getId(),
                 user.getName(),
                 user.getBirthDate(),
-                user.getAddress(),
+                AddressEntityMapper.toDomain(user.getAddress()),
                 user.getEmail(),
                 user.getPassword(),
                 user.getAccountType(),
-                user.getTasks(),
+                user.getTasks()
+                        .stream()
+                        .map(TaskEntityMapper::toDomain)
+                        .collect(Collectors.toList()),
                 user.getCreationDate()
         );
     }

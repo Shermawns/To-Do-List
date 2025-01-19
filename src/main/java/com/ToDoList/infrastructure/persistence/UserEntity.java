@@ -21,14 +21,14 @@ public class UserEntity {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
-    private Address address;
+    private AddressEntity address;
 
     private String email;
 
     private String password;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Task> tasks;
+    private List<TaskEntity> tasks;
 
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
@@ -37,7 +37,7 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public UserEntity(Long id, String name, LocalDate birthDate, Address address, String email, String password, List<Task> tasks, AccountType accountType, LocalDate creationDate) {
+    public UserEntity(Long id, String name, LocalDate birthDate, AddressEntity address, String email, String password, List<TaskEntity> tasks, AccountType accountType, LocalDate creationDate) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
@@ -73,11 +73,11 @@ public class UserEntity {
         this.birthDate = birthDate;
     }
 
-    public Address getAddress() {
+    public AddressEntity getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(AddressEntity address) {
         this.address = address;
     }
 
@@ -113,7 +113,7 @@ public class UserEntity {
         this.creationDate = creationDate;
     }
 
-    public List<Task> getTasks() {
+    public List<TaskEntity> getTasks() {
         return tasks;
     }
 }
