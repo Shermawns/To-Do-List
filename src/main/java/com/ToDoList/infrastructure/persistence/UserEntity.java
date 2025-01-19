@@ -1,25 +1,35 @@
 package com.ToDoList.infrastructure.persistence;
+import com.ToDoList.core.entities.Address;
+import com.ToDoList.core.entities.Task;
 import com.ToDoList.core.entities.enums.AccountType;
 import jakarta.persistence.*;
+import lombok.Builder;
 
 import java.time.LocalDate;
 import java.util.List;
-
+@Builder
 @Entity
 @Table(name = "tb_user")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private LocalDate birthDate;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
-    private AddressEntity address;
+    private Address address;
+
     private String email;
+
     private String password;
+
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<TaskEntity> tasks;
+    private List<Task> tasks;
+
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
     private LocalDate creationDate;
@@ -27,7 +37,7 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public UserEntity(Long id, String name, LocalDate birthDate, AddressEntity address, String email, String password, List<TaskEntity> tasks, AccountType accountType, LocalDate creationDate) {
+    public UserEntity(Long id, String name, LocalDate birthDate, Address address, String email, String password, List<Task> tasks, AccountType accountType, LocalDate creationDate) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
@@ -63,11 +73,11 @@ public class UserEntity {
         this.birthDate = birthDate;
     }
 
-    public AddressEntity getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(AddressEntity address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
@@ -103,7 +113,7 @@ public class UserEntity {
         this.creationDate = creationDate;
     }
 
-    public List<TaskEntity> getTasks() {
+    public List<Task> getTasks() {
         return tasks;
     }
 }

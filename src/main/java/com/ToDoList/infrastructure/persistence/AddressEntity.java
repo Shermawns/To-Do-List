@@ -43,6 +43,14 @@ public class AddressEntity {
         this.id = id;
     }
 
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
     public String getStreet() {
         return street;
     }
@@ -105,13 +113,5 @@ public class AddressEntity {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public UserEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UserEntity user) {
-        this.user = user;
     }
 }
