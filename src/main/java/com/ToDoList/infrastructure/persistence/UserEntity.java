@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 @Builder
 @Entity
@@ -28,7 +29,7 @@ public class UserEntity {
     private String password;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<TaskEntity> tasks;
+    private List<TaskEntity> tasks = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private AccountType accountType;

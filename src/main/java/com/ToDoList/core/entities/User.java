@@ -2,6 +2,7 @@ package com.ToDoList.core.entities;
 
 import com.ToDoList.core.entities.enums.AccountType;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -12,7 +13,7 @@ public class User {
     String email;
     String password;
     AccountType accountType;
-    List<Task> task;
+    List<Task> task = new ArrayList<>();
     LocalDate creationDate;
 
     public User() {
